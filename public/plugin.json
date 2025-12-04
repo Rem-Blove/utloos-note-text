@@ -1,0 +1,12 @@
+{
+  "preload": "preload.js",
+  "logo": "logo.png",
+
+  "features": [
+    {
+      "code": "note",
+      "cmds": ["便签"]
+    }
+  ],
+  "$schema": "../node_modules/utools-api-types/resource/utools.schema.json"
+}
