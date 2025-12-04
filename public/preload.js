@@ -6,10 +6,12 @@ window.exports = {
       enter: () => {
         const ubWindow = utools.createBrowserWindow('index.html', {
           width: 600,
-          height: 600,
+          height: 500,
           shadow: false,
           frame: false,
           transparent: true,
+          thickFrame: false,
+          hasShadow: false,
           webPreferences: {
             zoomFactor: 1.0,
             devTools: true,
