@@ -3,17 +3,14 @@ window.exports = {
   note: {
     mode: 'none',
     args: {
+      // 插件入口（自动调用）
       enter: () => {
         const ubWindow = utools.createBrowserWindow('index.html', {
           width: 600,
           height: 500,
-          shadow: false,
-          frame: false,
           transparent: true,
-          thickFrame: false,
-          hasShadow: false,
+          frame: false,
           webPreferences: {
-            zoomFactor: 1.0,
             devTools: true,
           },
         }, () => {
