@@ -1,12 +1,15 @@
 {
   "preload": "preload.js",
   "logo": "logo.png",
-
   "features": [
     {
       "code": "note",
-      "cmds": ["便签"]
+      "cmds": ["便签", "note"],
+      "mainHide": true
     }
   ],
+  "pluginSetting": {
+    "single": true
+  },
   "$schema": "../node_modules/utools-api-types/resource/utools.schema.json"
 }
