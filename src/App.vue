@@ -30,11 +30,12 @@ interface HandleFontSizeOptions {
  * @returns void
  */
 function handleFontSize({ e, key, minSize, defFontSize }: HandleFontSizeOptions) {
-  if (key.includes(e.code) && e.ctrlKey) {
-    e.preventDefault()
-    defFontSize.value += e.code === 'Equal' ? 2 : -2
+  if (!key.includes(e.code) && !e.ctrlKey) {
+    return
   }
 
+  e.preventDefault()
+  defFontSize.value += e.code === 'Equal' ? 2 : -2
   document.querySelector('body')!.style.fontSize = `${Math.max(minSize, defFontSize.value)}px`
 }
 </script>
