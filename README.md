@@ -13,6 +13,11 @@
 
 ![alt text](images/1.png)
 
+## 快捷键
+
+- Ctrl + = 放大字体
+- Ctrl + - 缩小字体
+
 ## 开发者文档(uTloos)
 
 <https://www.u-tools.cn/docs/developer/docs.html>
