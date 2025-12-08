@@ -4,8 +4,9 @@
   "features": [
     {
       "code": "note",
-      "cmds": ["便签", "note"],
-      "mainHide": true
+      "explain": "Open Edit Text",
+      "mainHide": true,
+      "cmds": ["EditText"]
     }
   ],
   "pluginSetting": {
