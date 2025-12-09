@@ -4,39 +4,28 @@ import { onKeyStroke } from '@vueuse/core'
 import { ref } from 'vue'
 
 // 放大 or 缩小字体
-const defFontSize = ref(16)
+const defaultFontSize = ref(16)
 onKeyStroke(true, (e) => {
-  handleFontSize({
-    e,
-    key: ['Equal', 'Minus'],
-    minSize: 10,
-    defFontSize,
-  })
+  handleFontSize(e, 10, defaultFontSize)
 })
 
-interface HandleFontSizeOptions {
-  /** 键盘事件 */
-  e: KeyboardEvent
-  /** 触发按键keyCode */
-  key: string[]
-  /** 最小字体大小 */
-  minSize: number
-  /** 默认字体大小 */
-  defFontSize: Ref<number>
-}
 /**
  * 缩放字体大小（默认步长为2px）
- * @param {HandleFontSizeOptions} options 配置选项
+ * @param e 键盘事件
+ * @param minSize 最小字体大小
+ * @param defaultSize 默认字体大小
+ * @param key 触发按键code，默认['Equal', 'Minus']
+ * @param step 缩放步长，默认2px
  * @returns void
  */
-function handleFontSize({ e, key, minSize, defFontSize }: HandleFontSizeOptions) {
+function handleFontSize(e: KeyboardEvent, minSize: number, defaultSize: Ref<number>, key = ['Equal', 'Minus'], step = 2) {
   if (!key.includes(e.code) && !e.ctrlKey) {
     return
   }
 
   e.preventDefault()
-  defFontSize.value += e.code === 'Equal' ? 2 : -2
-  document.querySelector('body')!.style.fontSize = `${Math.max(minSize, defFontSize.value)}px`
+  defaultSize.value += e.code === 'Equal' ? step : -step
+  document.querySelector('body')!.style.fontSize = `${Math.max(minSize, defaultSize.value)}px`
 }
 </script>
 
