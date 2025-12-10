@@ -29,7 +29,7 @@ function handleCloseApp(e: KeyboardEvent) {
  * @returns void
  */
 function handleFontSize(e: KeyboardEvent, minSize: number, defaultSize: Ref<number>, key = ['Equal', 'Minus'], step = 2) {
-  if (!key.includes(e.code) && !e.ctrlKey) {
+  if (!e.ctrlKey || !key.includes(e.code)) {
     return
   }
 
