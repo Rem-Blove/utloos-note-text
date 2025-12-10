@@ -3,11 +3,25 @@ import type { Ref } from 'vue'
 import { onKeyStroke } from '@vueuse/core'
 import { ref } from 'vue'
 
-// 放大 or 缩小字体
 const defaultFontSize = ref(16)
 onKeyStroke(true, (e) => {
+  // 放大 or 缩小字体
   handleFontSize(e, 10, defaultFontSize)
+
+  // 关闭应用
+  handleCloseApp(e)
 })
+
+const preKey = ref('')
+function handleCloseApp(e: KeyboardEvent) {
+  if (e.code !== 'Escape') {
+    return
+  }
+
+  preKey.value = e.code
+  // 看之前是否也按下了 Esc
+  preKey.value === e.code && window.close() && utools.outPlugin(true)
+}
 
 /**
  * 缩放字体大小（默认步长为2px）
