@@ -12,15 +12,11 @@ onKeyStroke(true, (e) => {
   handleCloseApp(e)
 })
 
-const preKey = ref('')
+const keyString = ref('')
 function handleCloseApp(e: KeyboardEvent) {
-  if (e.code !== 'Escape') {
-    return
-  }
-
-  preKey.value = e.code
-  // 看之前是否也按下了 Esc
-  preKey.value === e.code && window.close() && utools.outPlugin(true)
+  keyString.value += e.code
+  const reg = /(?:Escape){2}/
+  reg.test(keyString.value) && window.close() && utools.outPlugin(true)
 }
 
 /**
