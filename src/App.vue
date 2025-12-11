@@ -1,7 +1,12 @@
 <script setup lang="ts">
 import type { Ref } from 'vue'
 import { onKeyStroke } from '@vueuse/core'
-import { ref } from 'vue'
+import { onMounted, ref } from 'vue'
+
+const editRef = ref<HTMLDivElement | null>(null)
+onMounted(() => {
+  editRef.value?.focus()
+})
 
 const defaultFontSize = ref(16)
 onKeyStroke(true, (e) => {
@@ -42,7 +47,7 @@ function handleFontSize(e: KeyboardEvent, minSize: number, defaultSize: Ref<numb
 <template>
   <div class="flex h-full flex-col border border-[#fbe961] text-black">
     <div class="drag h-5 cursor-move bg-[#fbe961]" />
-    <div class="no-drag flex-1 bg-[#fdf3a7] p-2 outline-none" contenteditable />
+    <div ref="editRef" class="no-drag flex-1 bg-[#fdf3a7] p-2 outline-none" contenteditable />
   </div>
 </template>
 
