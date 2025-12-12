@@ -17,6 +17,8 @@ window.exports = {
           if (utools.isDev()) {
             ubWindow.webContents.openDevTools({ mode: 'detach' })
           }
+
+          utools.outPlugin()
         })
       },
     },
