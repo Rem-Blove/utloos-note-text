@@ -8,10 +8,10 @@ onMounted(() => {
   editRef.value?.focus()
 })
 
-const defaultFontSize = ref(16)
+const fontSize = ref(24)
 onKeyStroke(true, (e) => {
   // 放大 or 缩小字体
-  handleFontSize(e, 10, defaultFontSize)
+  handleFontSize(e, 10, fontSize)
 
   // 关闭应用
   handleCloseApp(e)
@@ -51,7 +51,7 @@ function handleFontSize(e: KeyboardEvent, minSize: number, defaultSize: Ref<numb
 <template>
   <div class="flex h-full flex-col border border-[#fbe961] text-black">
     <div class="drag h-5 cursor-move bg-[#fbe961]" />
-    <div ref="editRef" class="no-drag flex-1 bg-[#fdf3a7] p-2 outline-none" contenteditable spellcheck="false" />
+    <div ref="editRef" class="no-drag flex-1 bg-[#fdf3a7] p-2 text-2xl outline-none" contenteditable spellcheck="false" />
   </div>
 </template>
 
