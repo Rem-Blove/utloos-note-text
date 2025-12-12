@@ -19,9 +19,13 @@ onKeyStroke(true, (e) => {
 
 const keyString = ref('')
 function handleCloseApp(e: KeyboardEvent) {
+  if (keyString.value.length >= 20 && e.code !== 'Escape') {
+    keyString.value = ''
+  }
+
   keyString.value += e.code
   const reg = /(?:Escape){2}/
-  reg.test(keyString.value) && window.close() && utools.outPlugin(true)
+  reg.test(keyString.value) && window.close()
 }
 
 /**
